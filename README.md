@@ -1,73 +1,39 @@
-<!--
-title: 'AWS NodeJS Example'
-description: 'This template demonstrates how to deploy a NodeJS function running on AWS Lambda using the traditional Serverless Framework.'
-layout: Doc
-framework: v3
-platform: AWS
-language: nodeJS
-priority: 1
-authorLink: 'https://github.com/serverless'
-authorName: 'Serverless, inc.'
-authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
--->
+# Função Lambda utilizando o Serveless Framework e o Rekognition da AWS para análise de imagem
+
+Este repositório contém uma função Lambda desenvolvida utilizando o Serveless Framework e a API de Rekognition da AWS para análise de conteúdo de imagem.
+
+## Descrição da Função
+
+A função Lambda é acionada através de um parâmetro `imageUrl`, que recebe o link de uma imagem para ser analisada. Através da API do Rekognition, a imagem é analisada e são extraídas informações como:
+
+- Detecção de objetos
+- Reconhecimento de rostos
+- Detecção de textos
+
+Essas informações são então retornadas na resposta da função.
+
+## Como usar
+
+Para utilizar a função Lambda, é necessário ter uma conta ativa na AWS e configurar as permissões necessárias para o acesso ao Rekognition.
+
+Após clonar o repositório, execute o seguinte comando na raiz do projeto para instalar as dependências:
+
+npm install
 
 
-# Serverless Framework AWS NodeJS Example
+Antes de fazer o deploy da função Lambda, é necessário configurar as variáveis de ambiente no arquivo `serverless.yml` com as informações de acesso ao Rekognition.
 
-This template demonstrates how to deploy a NodeJS function running on AWS Lambda using the traditional Serverless Framework. The deployed function does not include any event definitions as well as any kind of persistence (database). For more advanced configurations check out the [examples repo](https://github.com/serverless/examples/) which includes integrations with SQS, DynamoDB or examples of functions that are triggered in `cron`-like manner. For details about configuration of specific `events`, please refer to our [documentation](https://www.serverless.com/framework/docs/providers/aws/events/).
+Para fazer o deploy da função Lambda, execute o seguinte comando na raiz do projeto:
 
-## Usage
+sls deploy
 
-### Deployment
 
-In order to deploy the example, you need to run the following command:
+Após o deploy da função, a mesma estará pronta para ser acionada através do parâmetro `imageUrl`.
 
-```
-$ serverless deploy
-```
+## Contribuições
 
-After running deploy, you should see output similar to:
+Contribuições são sempre bem-vindas! Se você quiser contribuir com melhorias no código, correções de bugs, ou adicionar novas funcionalidades, fique à vontade para criar um pull request.
 
-```bash
-Deploying aws-node-project to stage dev (us-east-1)
+## Licença
 
-✔ Service deployed to stack aws-node-project-dev (112s)
-
-functions:
-  hello: aws-node-project-dev-hello (1.5 kB)
-```
-
-### Invocation
-
-After successful deployment, you can invoke the deployed function by using the following command:
-
-```bash
-serverless invoke --function hello
-```
-
-Which should result in response similar to the following:
-
-```json
-{
-    "statusCode": 200,
-    "body": "{\n  \"message\": \"Go Serverless v3.0! Your function executed successfully!\",\n  \"input\": {}\n}"
-}
-```
-
-### Local development
-
-You can invoke your function locally by using the following command:
-
-```bash
-serverless invoke local --function hello
-```
-
-Which should result in response similar to the following:
-
-```
-{
-    "statusCode": 200,
-    "body": "{\n  \"message\": \"Go Serverless v3.0! Your function executed successfully!\",\n  \"input\": \"\"\n}"
-}
-```
-# Analisador-de-Imagens
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para obter mais informações.
